@@ -1,14 +1,80 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
-  <title>Pay via UPI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pay Subrat via UPI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    .container {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: auto;
+    }
+    .btn {
+      display: block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background-color: #673AB7;
+    }
+    img.qr {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .upi-id {
+      font-size: 18px;
+      background: #eee;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Pay ₹10 to Subrat Manna</h2>
-  <p>UPI ID: <b>subratmanna4147@naviaxis</b></p>
-  <a href="upi://pay?pa=subratmanna4147@naviaxis&pn=Subrat%20Manna&am=10&cu=INR" style="font-size:20px; background:#4CAF50; color:white; padding:10px 20px; text-decoration:none; border-radius:8px;">
-    Pay Now
-  </a>
-  <p>If the button doesn't work, copy and paste the UPI ID into your payment app.</p>
-</body>
+  <div class="container">
+    <h2>Pay Subrat Manna</h2>
+    <p>Use any UPI app to send ₹10</p><!-- Android UPI button -->
+<a class="btn" href="upi://pay?pa=subratmanna4147@naviaxis&pn=Subrat%20Manna&am=10&cu=INR">
+  Pay ₹10 via UPI (Android)
+</a>
+
+<!-- QR Code -->
+<img src="https://api.qrserver.com/v1/create-qr-code/?data=upi://pay?pa=subratmanna4147@naviaxis&pn=Subrat%20Manna&am=10&cu=INR&size=250x250" class="qr" alt="UPI QR Code">
+
+<!-- Copy UPI ID -->
+<p class="upi-id" id="upi-id">subratmanna4147@naviaxis</p>
+<button class="btn btn-secondary" onclick="copyUPI()">Copy UPI ID</button>
+
+<!-- App links -->
+<p>Or open your UPI app:</p>
+<a class="btn btn-secondary" href="https://apps.apple.com/in/app/phonepe/id1170055821">Open PhonePe (iOS)</a>
+<a class="btn btn-secondary" href="https://apps.apple.com/in/app/google-pay-save-pay-manage/id1193357041">Open GPay (iOS)</a>
+<a class="btn btn-secondary" href="https://apps.apple.com/in/app/paytm-secure-upi-payments/id473941634">Open Paytm (iOS)</a>
+
+  </div>  <script>
+    function copyUPI() {
+      const upiID = document.getElementById("upi-id").textContent;
+      navigator.clipboard.writeText(upiID).then(() => {
+        alert("UPI ID copied to clipboard!");
+      });
+    }
+  </script></body>
 </html>
